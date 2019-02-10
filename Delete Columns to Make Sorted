@@ -1,0 +1,13 @@
+
+
+class Solution:
+    def minDeletionSize(self, A: 'List[str]') -> 'int':
+        count = 0
+        buff_list = zip(*A)
+
+        for word in buff_list:
+            for i in range(len(A) - 1):
+                if word[i + 1] < word[i]:
+                    count += 1
+                    break
+        return count

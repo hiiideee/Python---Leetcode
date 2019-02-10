@@ -1,0 +1,18 @@
+#Given a string S that only contains "I" (increase) or "D" (decrease), let N = S.length.
+#Return any permutation A of [0, 1, ..., N] such that for all i = 0, ..., N-1:
+#If S[i] == "I", then A[i] < A[i+1]
+#If S[i] == "D", then A[i] > A[i+1]
+ 
+
+class Solution:
+    def diStringMatch(self, S: 'str') -> 'List[int]':
+        num = list(range(len(S) + 1))
+        new_S = []
+        for i in range(len(S)):
+            if S[i] == 'I':
+                new_S.append(num[0])
+                num.pop(0)
+            else:
+                new_S.append(num[-1])
+                num.pop()
+        return new_S + num

@@ -1,0 +1,31 @@
+#Now, given a list of words, each word can be written as a concatenation of the Morse code of each letter. 
+#For example, "cba" can be written as "-.-..--...", (which is the concatenation "-.-." + "-..." + ".-"). 
+#We'll call such a concatenation, the transformation of a word.
+#Return the number of different transformations among all words we have.
+
+class Solution:
+    def __init__(self):
+        self.morse = [".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."]
+    def uniqueMorseRepresentations(self, words: 'List[str]') -> 'int':
+        dic = dict((chr(x + 97), self.morse[x]) for x in range(26))
+        buff_dic = {}
+        for word in words:
+            new_char = ''
+            for char in word:
+                new_char = new_char + dic[char]
+            buff_dic[new_char] = new_char
+
+        return len(buff_dic)
+
+
+class Solution(object):
+    def uniqueMorseRepresentations(self, words):
+        MORSE = [".-","-...","-.-.","-..",".","..-.","--.",
+                 "....","..",".---","-.-",".-..","--","-.",
+                 "---",".--.","--.-",".-.","...","-","..-",
+                 "...-",".--","-..-","-.--","--.."]
+
+        seen = {"".join(MORSE[ord(c) - ord('a')] for c in word)
+                for word in words}
+
+        return len(seen)

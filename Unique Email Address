@@ -33,3 +33,15 @@ class Solution:
             dic[new_email] = new_email
 
         return(len(dic))
+        
+        
+def numUniqueEmails(self, emails: 'List[str]') -> 'int':
+    vocabulary_count = {}
+    for i in emails:
+        local, domain = i.split('@')
+        local = local.partition('+')[0]
+        local = local.replace('.', '')
+        local = local + '@' + domain
+        if local not in vocabulary_count:
+            vocabulary_count[local] = emails.index(i) 
+    return len(vocabulary_count)

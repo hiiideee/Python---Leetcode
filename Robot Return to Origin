@@ -1,0 +1,26 @@
+
+
+
+class Solution:
+    def judgeCircle(self, moves: 'str') -> 'bool':
+        lens = len(moves)
+        index = 0
+        a = 0
+        b = 0
+        while a <= lens and b <= lens and 0 < lens:
+            if moves[index] == 'U':
+                a += 1
+            if moves[index] == 'D':
+                a -= 1
+            if moves[index] == 'L':
+                b += 1
+            if moves[index] == 'R':
+                b -= 1
+            index += 1
+            lens -= 1
+
+        return not (a or b)
+
+class Solution:
+    def judgeCircle(self, moves: 'str') -> 'bool':
+        return not (moves.count('U') - moves.count('D') or moves.count('L') - moves.count('R'))

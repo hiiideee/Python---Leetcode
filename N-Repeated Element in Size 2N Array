@@ -1,0 +1,19 @@
+#In a array A of size 2N, there are N+1 unique elements, and exactly one of these elements is repeated N times.
+#Return the element repeated N times.
+
+class Solution:
+    def repeatedNTimes(self, A: 'List[int]') -> 'int':
+        lens = int(len(A) / 2)
+        dic = {}
+        for i in range(lens):
+            if A[i] in dic.keys():
+                return A[i]
+                break
+                
+            dic[A[i]] = A[i]
+            
+            if A[lens + i] in dic.keys():
+                return A[lens + i]
+                break
+
+            dic[A[lens + i]] = [A[lens + i]]

@@ -1,0 +1,7 @@
+#The Hamming distance between two integers is the number of positions at which the corresponding bits are different.
+#Given two integers x and y, calculate the Hamming distance
+
+class Solution:
+    def hammingDistance(self, x: 'int', y: 'int') -> 'int':
+        return str(int(bin(x).partition('b')[2]) + int(bin(y).partition('b')[2])).count('1')
+        

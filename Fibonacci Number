@@ -1,0 +1,17 @@
+#F(N) = F(N - 1) + F(N - 2), for N > 1.
+#Given N, calculate F(N).
+
+class Solution:
+    def fib(self, N: 'int') -> 'int':
+        def plus(a, b):
+            return b, a + b
+        a, b = 0, 1
+        if N == 0:
+            return 0
+        for i in range(N - 1):
+            a, b = plus(a, b)
+        return b
+
+class Solution:
+    def fib(self, N, l = -1, r = 1):
+        return self.fib(N - 1, r, l + r) if N else l + r

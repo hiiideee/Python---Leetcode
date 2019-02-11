@@ -1,0 +1,5 @@
+#Given a matrix A, return the transpose of A.
+
+class Solution:
+    def transpose(self, A: 'List[List[int]]') -> 'List[List[int]]':
+        return [list(x) for x in zip(*A)]
